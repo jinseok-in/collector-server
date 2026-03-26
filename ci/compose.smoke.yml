@@ -6,7 +6,7 @@ services:
     environment:
       TZ: ${TZ}
     ports:
-      - "3306:3306"
+      - "${DB_PORT}:${DB_PORT}"
     volumes:
       - ./ci/init-mariadb.sql:/docker-entrypoint-initdb.d/init-mariadb.sql:ro
     healthcheck:
@@ -26,4 +26,4 @@ services:
       mariadb:
         condition: service_healthy
     ports:
-      - "8080:8080"
+      - "${PORT}:${PORT}"
